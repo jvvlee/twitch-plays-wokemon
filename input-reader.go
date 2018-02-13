@@ -1,11 +1,10 @@
 package main
 
 import (
-    "fmt"
     "log"
     "os"
     "bufio"
-    // "github.com/go-vgo/robotgo"
+    "github.com/go-vgo/robotgo"
 )
 
 func main() {
@@ -19,7 +18,7 @@ func main() {
   scanner := bufio.NewScanner(file)
   
   for scanner.Scan() {
-    fmt.Println(scanner.Text())
+    robotgo.TypeString(scanner.Text())
   }
 
   if err := scanner.Err(); err != nil {
