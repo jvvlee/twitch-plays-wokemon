@@ -1,0 +1,6 @@
+package: github.com/personal/pwitch_plays_tokemon
+import:
+- package: github.com/dimorinny/twitch-chat-api
+- package: github.com/go-vgo/robotgo
+  version: ~0.48.0
+- package: github.com/Sirupsen/logrus
