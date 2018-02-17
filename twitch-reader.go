@@ -4,10 +4,13 @@ import(
   log "github.com/Sirupsen/logrus"
   twitchchat "github.com/dimorinny/twitch-chat-api"
   "fmt"
+  "os"
 )
 
-var (
-  config *twitchchat.Configuration
+var config *twitchchat.Configuration = twitchchat.NewConfiguration(
+    "testicles",
+    os.Getenv("TWITCH_OAUTH"),
+    "data_dave",
 )
 
 func disconnect() {
@@ -23,11 +26,6 @@ func newMessage(message string) {
 }
 
 func main() {
-  config := twitchchat.NewConfiguration(
-    "test",
-    "oauth:ex9ki2l39r579fkzlk7ry4h3zdb4hy",
-    "test",
-  )
 
   twitch := twitchchat.NewChat(config)
 
