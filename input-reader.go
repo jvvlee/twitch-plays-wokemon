@@ -5,9 +5,28 @@ import (
     "os"
     "bufio"
     "github.com/go-vgo/robotgo"
+    "errors"
 )
 
-var allowed_keys = map[string]string {
+type Command string
+
+type CommandInterpreter interface {
+  parseCommand(string) (Command, error)
+}
+
+type CommandInterpretron struct {}
+
+func (c *CommandInterpretron) parseCommand(chat string) (Command, error) {
+  value, allowed := allowed_keys[chat] 
+
+  if allowed {
+    return value, nil
+  } else {
+    return "", errors.New("Command not recognized.")
+  }
+}
+
+var allowed_keys = map[string]Command{
     "Left": "Left",
     "Right": "Right",
     "Up": "Up",
@@ -23,6 +42,8 @@ func main() {
     log.Fatal(err)
   }
 
+  commandinterpreter := new(CommandInterpretron)
+
   defer file.Close()
 
   scanner := bufio.NewScanner(file)
@@ -30,8 +51,8 @@ func main() {
   for scanner.Scan() {
     command := scanner.Text()
 
-    if value, allowed := allowed_keys[command]; allowed {
-      robotgo.TypeString(value);
+    if interpretedCommand, err := commandinterpreter.parseCommand(command); err == nil {
+      robotgo.TypeString(string(interpretedCommand));
     }
   }
 
