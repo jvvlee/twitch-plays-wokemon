@@ -30,8 +30,8 @@ func main() {
   for scanner.Scan() {
     command := scanner.Text()
 
-    if _, allowed := allowed_keys[command]; allowed {
-      robotgo.TypeString(allowed_keys[command]);
+    if value, allowed := allowed_keys[command]; allowed {
+      robotgo.TypeString(value);
     }
   }
 
