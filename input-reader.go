@@ -2,29 +2,10 @@ package main
 
 import (
 	"bufio"
-	"errors"
 	"github.com/go-vgo/robotgo"
 	"log"
 	"os"
 )
-
-type Command string
-
-type CommandInterpreter interface {
-	parseCommand(string) (Command, error)
-}
-
-type CommandInterpretron struct{}
-
-func (c *CommandInterpretron) parseCommand(chat string) (Command, error) {
-	value, allowed := allowed_keys[chat]
-
-	if allowed {
-		return value, nil
-	} else {
-		return "", errors.New("Command not recognized.")
-	}
-}
 
 var allowed_keys = map[string]Command{
 	"Left":  "Left",
@@ -36,13 +17,22 @@ var allowed_keys = map[string]Command{
 	"Start": "Enter",
 }
 
+// type CommandAutomaton struct {
+// 	I *CommandInterpretron
+// 	commandStream chan string
+// }
+
+// func (ca *CommandAutomaton) executeCommands() error {
+	
+// }
+
 func main() {
 	file, err := os.Open("file.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	commandinterpreter := new(CommandInterpretron)
+	commandinterpreter := NewInterpetron(allowed_keys)
 
 	defer file.Close()
 
