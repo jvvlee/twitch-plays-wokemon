@@ -21,7 +21,7 @@ func NewInterpetron(newDictionary map[string]Command) *CommandInterpretron {
 }
 
 func (c *CommandInterpretron) parseCommand(chat string) (Command, error) {
-  value, allowed := allowed_keys[chat]
+  value, allowed := c.dict[chat]
 
   if allowed {
     return value, nil
