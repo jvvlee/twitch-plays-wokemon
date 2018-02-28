@@ -1,5 +1,5 @@
-hash: 5d869c6cbf296e25e02daed6ec8aad554ae04e1b803c8054e138ea29d908c40e
-updated: 2018-02-14T16:01:02.358954-05:00
+hash: b70db39d2531ea5726e79d858b03aec3d62fece8fc5862b33df281e9e0305134
+updated: 2018-02-21T22:34:57.582934-05:00
 imports:
 - name: github.com/dimorinny/twitch-chat-api
   version: 96f864820370b480e4395416852118f3cf9a537e
@@ -21,6 +21,8 @@ imports:
   version: 58cd061d09382b6011f84c1291ebe50ef2e25bab
   subpackages:
   - gomock
+- name: github.com/jtolds/gls
+  version: 9a4a02dbe491bef4bab3c24fd9f3087d6c4c6690
 - name: github.com/shirou/gopsutil
   version: 32a44bdc39e48b27eb0430edcd9c77920d161864
   subpackages:
@@ -34,6 +36,16 @@ imports:
   version: bb4de0191aa41b5507caa14b0650cdbddcd9280b
 - name: github.com/Sirupsen/logrus
   version: 8c0189d9f6bbf301e5d055d34268156b317016af
+- name: github.com/smartystreets/assertions
+  version: 9cc1cfcc21bb425764ce2f6d73f5c86615a8035a
+  subpackages:
+  - internal/oglematchers
+- name: github.com/smartystreets/goconvey
+  version: 9e8dc3f972df6c8fcc0375ef492c24d0bb204857
+  subpackages:
+  - convey
+  - convey/gotest
+  - convey/reporting
 - name: github.com/StackExchange/wmi
   version: 5d049714c4a64225c3c79a7cf7d02f7fb5b96338
 - name: golang.org/x/crypto
