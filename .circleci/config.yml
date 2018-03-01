@@ -17,5 +17,6 @@ jobs:
     working_directory: /go/src/github.com/jvvlee/twitch_plays_wokemon
     steps:
       - checkout
-      - run: go get -v -t -d ./...
+      - run: sudo apt-get install glide
+      - run: glide install
       - run: go test -v ./...
