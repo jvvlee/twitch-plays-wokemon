@@ -25,7 +25,7 @@ func newMessage(message string) {
 	fmt.Println(message)
 }
 
-func main() {
+func startTwitch() {
 
 	twitch := twitchchat.NewChat(config)
 

@@ -9,7 +9,7 @@ func TestInterpetron(t *testing.T) {
   var aMap = map[string]Command{"A": "B", "C": "D",}
 
   Convey("constructor returns an interpetron", t, func() {
-    dummyInterpetron := new(CommandInterpetron)
+    dummyInterpetron := new(CommandInterpretron)
     dummyInterpetron.dict = aMap
 
     So(NewInterpetron(aMap), ShouldResemble, dummyInterpetron)
@@ -20,6 +20,6 @@ func TestInterpetron(t *testing.T) {
     someCommand, _ := testInterpetron.parseCommand("A")
     So(someCommand, ShouldEqual, Command("B"))
     _, err := testInterpetron.parseCommand("B")
-    So(err, ShouldPanic)
+    So(err, ShouldNotBeNil)
   })
 }
