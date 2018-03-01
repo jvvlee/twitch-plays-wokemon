@@ -20,6 +20,6 @@ func TestInterpetron(t *testing.T) {
     someCommand, _ := testInterpetron.parseCommand("A")
     So(someCommand, ShouldEqual, Command("B"))
     _, err := testInterpetron.parseCommand("B")
-    So(err, ShouldNotBeNil)
+    So(err, ShouldBeError)
   })
 }
