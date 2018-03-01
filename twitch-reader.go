@@ -40,3 +40,9 @@ func main() {
 
 	<-stop
 }
+
+type TwitchStream struct {
+	twitchConfig *twitchchat.Configuration
+	twitchChannel chan string
+}
+

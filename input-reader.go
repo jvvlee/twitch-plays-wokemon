@@ -1,11 +1,5 @@
 package main
 
-import (
-	"bufio" 
-	"log"
-	"os"
-)
-
 var allowed_keys = map[string]Command{
 	"Left":  "Left",
 	"Right": "Right",
@@ -18,7 +12,7 @@ var allowed_keys = map[string]Command{
 
 func main() {
 	interpreter := NewInterpetron(allowed_keys)
-	commander := newAutomaton(interpreter)
+	kommander := newAutomaton(interpreter, "file.txt")
 
-	commander.commandRoutine()
+	kommander.commandRoutine()
 }
