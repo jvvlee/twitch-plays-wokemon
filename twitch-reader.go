@@ -8,14 +8,18 @@ import (
 	twitchchat "github.com/dimorinny/twitch-chat-api"
 )
 
-type twitchListener struct {
-}
-
 var config *twitchchat.Configuration = twitchchat.NewConfiguration(
 	"wow",
 	os.Getenv("TWITCH_OAUTH"),
-	"data_dave",
+	"feelsgoodman",
 )
+
+type twitchHandler interface {
+	newMessage(string)
+}
+
+type twitchPrinter struct {
+}
 
 func disconnect() {
 	fmt.Println("Disconnected!")
@@ -25,27 +29,22 @@ func connect() {
 	fmt.Println("Connected!")
 }
 
-func newMessage(message string) {
+func (t *twitchPrinter) newMessage(message string) {
 	fmt.Println(message)
 }
 
-func startTwitch() {
+func ConnectToTwitch(th twitchHandler) {
 
 	twitch := twitchchat.NewChat(config)
 
 	stop := make(chan struct{})
 	defer close(stop)
 
-	err := twitch.ConnectWithCallbacks(connect, disconnect, newMessage)
+	err := twitch.ConnectWithCallbacks(connect, disconnect, th.newMessage)
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	<-stop
-}
-
-type TwitchStream struct {
-	twitchConfig  *twitchchat.Configuration
-	twitchChannel chan string
 }

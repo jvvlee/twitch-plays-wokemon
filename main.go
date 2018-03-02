@@ -15,4 +15,7 @@ func main() {
 	kommander := newAutomaton(interpreter, "file.txt")
 
 	kommander.commandRoutine()
+
+	th := new(twitchPrinter)
+	ConnectToTwitch(th)
 }
