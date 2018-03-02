@@ -10,7 +10,7 @@ We'll review what you've got next Friday. Make sure you've got Go running and wo
 
 Week 2:
 - Unit tests for intepretron
-- MyRobot class 
+- MyRobot class
   - Wraps robotgo
   - Has 'setup' method that fouses on target process
   - acceptcommand method
@@ -18,3 +18,7 @@ Week 2:
 - fmt linter for sublime?
 - Constructor for Interpretron class and another attribute for dictionary, ability to pass in own dictionary (for example, different systems/games)
 - Merge into master
+
+Week 3:
+- Integrate commander and twitch reader together with a channel
+- More tests

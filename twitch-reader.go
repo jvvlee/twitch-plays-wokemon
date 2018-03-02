@@ -14,13 +14,6 @@ var config *twitchchat.Configuration = twitchchat.NewConfiguration(
 	"swiftor",
 )
 
-type twitchHandler interface {
-	newMessage(string)
-}
-
-type twitchPrinter struct {
-}
-
 func disconnect() {
 	fmt.Println("Disconnected!")
 }
@@ -29,17 +22,13 @@ func connect() {
 	fmt.Println("Connected!")
 }
 
-func (t *twitchPrinter) newMessage(message string) {
-	fmt.Println(message)
-}
-
-func ConnectToTwitch(th twitchHandler) {
+func ConnectToTwitch(mh twitchchat.NewMessage) {
 	twitch := twitchchat.NewChat(config)
 
 	stop := make(chan struct{})
 	defer close(stop)
 
-	err := twitch.ConnectWithCallbacks(connect, disconnect, th.newMessage)
+	err := twitch.ConnectWithCallbacks(connect, disconnect, mh)
 
 	if err != nil {
 		log.Fatal(err)

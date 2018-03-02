@@ -18,7 +18,10 @@ func main() {
 
 	kommander.commandRoutine()
 
+	newMessage := func(message string) {
+		fmt.Println(message)
+	}
+
 	fmt.Println("past kommander")
-	th := new(twitchPrinter)
-	ConnectToTwitch(th)
+	ConnectToTwitch(newMessage)
 }
