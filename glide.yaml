@@ -4,3 +4,7 @@ import:
 - package: github.com/go-vgo/robotgo
   version: ~0.48.0
 - package: github.com/Sirupsen/logrus
+- package: github.com/smartystreets/goconvey
+  version: ^1.6.3
+  subpackages:
+  - convey
