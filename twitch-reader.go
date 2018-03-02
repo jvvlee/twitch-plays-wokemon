@@ -11,7 +11,7 @@ import (
 var config *twitchchat.Configuration = twitchchat.NewConfiguration(
 	"wow",
 	os.Getenv("TWITCH_OAUTH"),
-	"feelsgoodman",
+	"swiftor",
 )
 
 type twitchHandler interface {
@@ -34,7 +34,6 @@ func (t *twitchPrinter) newMessage(message string) {
 }
 
 func ConnectToTwitch(th twitchHandler) {
-
 	twitch := twitchchat.NewChat(config)
 
 	stop := make(chan struct{})

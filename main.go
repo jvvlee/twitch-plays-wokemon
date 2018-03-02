@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 var allowed_keys = map[string]Command{
 	"Left":  "Left",
 	"Right": "Right",
@@ -16,6 +18,7 @@ func main() {
 
 	kommander.commandRoutine()
 
+	fmt.Println("past kommander")
 	th := new(twitchPrinter)
 	ConnectToTwitch(th)
 }
