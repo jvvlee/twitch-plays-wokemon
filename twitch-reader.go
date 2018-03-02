@@ -2,13 +2,17 @@ package main
 
 import (
 	"fmt"
+	"os"
+
 	log "github.com/Sirupsen/logrus"
 	twitchchat "github.com/dimorinny/twitch-chat-api"
-	"os"
 )
 
+type twitchListener struct {
+}
+
 var config *twitchchat.Configuration = twitchchat.NewConfiguration(
-	"testicles",
+	"wow",
 	os.Getenv("TWITCH_OAUTH"),
 	"data_dave",
 )
@@ -42,7 +46,6 @@ func startTwitch() {
 }
 
 type TwitchStream struct {
-	twitchConfig *twitchchat.Configuration
+	twitchConfig  *twitchchat.Configuration
 	twitchChannel chan string
 }
-
