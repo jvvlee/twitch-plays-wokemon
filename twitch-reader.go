@@ -8,12 +8,6 @@ import (
 	twitchchat "github.com/dimorinny/twitch-chat-api"
 )
 
-var config *twitchchat.Configuration = twitchchat.NewConfiguration(
-	"wow",
-	os.Getenv("TWITCH_OAUTH"),
-	"swiftor",
-)
-
 func disconnect() {
 	fmt.Println("Disconnected!")
 }
@@ -22,10 +16,17 @@ func connect() {
 	fmt.Println("Connected!")
 }
 
-func ConnectToTwitch(mh twitchchat.NewMessage) {
+func ConnectToTwitch(nickname string, chatroom string, mh twitchchat.NewMessage) {
+	config := twitchchat.NewConfiguration(
+		nickname,
+		os.Getenv("TWITCH_OAUTH"),
+		chatroom,
+	)
+
 	twitch := twitchchat.NewChat(config)
 
 	stop := make(chan struct{})
+
 	defer close(stop)
 
 	err := twitch.ConnectWithCallbacks(connect, disconnect, mh)

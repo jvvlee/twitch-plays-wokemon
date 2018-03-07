@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 var allowed_keys = map[string]Command{
 	"Left":  "Left",
 	"Right": "Right",
@@ -14,14 +12,11 @@ var allowed_keys = map[string]Command{
 
 func main() {
 	interpreter := NewInterpetron(allowed_keys)
-	kommander := newAutomaton(interpreter, "file.txt")
+	kommander := newAutomaton(interpreter)
 
-	kommander.commandRoutine()
-
-	newMessage := func(message string) {
-		fmt.Println(message)
+	messageCallback := func(message string) {
+		kommander.executeCommand(message)
 	}
 
-	fmt.Println("past kommander")
-	ConnectToTwitch(newMessage)
+	ConnectToTwitch("wow", "zow", messageCallback)
 }
