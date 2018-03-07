@@ -9,10 +9,10 @@ type Commander interface {
 }
 
 type CommandAutomaton struct {
-	interpreter *CommandInterpretron
+	interpreter CommandInterpreter
 }
 
-func newAutomaton(interpetron *CommandInterpretron) Commander {
+func newAutomaton(interpetron CommandInterpreter) Commander {
 	automaton := new(CommandAutomaton)
 	automaton.interpreter = interpetron
 	return automaton
