@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 var allowed_keys = map[string]Command{
 	"Left":  "Left",
 	"Right": "Right",
@@ -16,7 +18,8 @@ func main() {
 
 	messageCallback := func(message string) {
 		kommander.executeCommand(message)
+		fmt.Println(message)
 	}
 
-	ConnectToTwitch("wow", "zow", messageCallback)
+	ConnectToTwitch("wow", "disguisedtoasths", messageCallback)
 }
