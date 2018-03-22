@@ -14,14 +14,12 @@ var allowed_keys = map[string]Command{
 
 func main() {
 	interpreter := NewInterpetron(allowed_keys)
-	kommander := newAutomaton(interpreter, "file.txt")
+	kommander := newAutomaton(interpreter)
 
-	kommander.commandRoutine()
-
-	newMessage := func(message string) {
+	messageCallback := func(message string) {
+		kommander.executeCommand(message)
 		fmt.Println(message)
 	}
 
-	fmt.Println("past kommander")
-	ConnectToTwitch(newMessage)
+	ConnectToTwitch("wow", "disguisedtoasths", messageCallback)
 }
