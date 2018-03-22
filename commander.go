@@ -22,7 +22,7 @@ func (c *CommandAutomaton) executeCommand(kommand string) error {
 	interpretedCommand, err := c.interpreter.parseCommand(kommand)
 
 	if err == nil {
-		robotgo.TypeString(string(interpretedCommand))
+		robotgo.KeyTap(string(interpretedCommand))
 		return nil
 	}
 

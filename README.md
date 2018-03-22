@@ -22,3 +22,6 @@ Week 2:
 Week 3:
 - Integrate commander and twitch reader together with a channel
 - More tests
+
+Week 4:
+- Implement Visualboyadvance inputs
