@@ -1,3 +1,4 @@
 .env
 vendor/
 pwitch_plays_tokemon
+.DS_Store

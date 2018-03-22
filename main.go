@@ -1,8 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
 
-var allowed_keys = map[string]Command{
+	"github.com/personal/pwitch_plays_tokemon/pokemon"
+)
+
+var allowed_keys = map[string]pokemon.Command{
 	"Left":  "left",
 	"Right": "right",
 	"Up":    "up",
@@ -13,15 +17,15 @@ var allowed_keys = map[string]Command{
 }
 
 func main() {
-	interpreter := NewInterpetron(allowed_keys)
-	kommander := newAutomaton(interpreter)
+	interpreter := pokemon.NewInterpetron(allowed_keys)
+	kommander := pokemon.NewAutomaton(interpreter)
 
 	messageCallback := func(message string) {
-		err := kommander.executeCommand(message)
+		err := kommander.ExecuteCommand(message)
 		fmt.Println(err)
 	}
 
-	getWindow("OpenEmu")
+	pokemon.GetWindow("OpenEmu")
 
-	ConnectToTwitch("wow", "test", messageCallback)
+	pokemon.ConnectToTwitch("wow", "test", messageCallback)
 }
