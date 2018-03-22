@@ -3,13 +3,13 @@ package main
 import "fmt"
 
 var allowed_keys = map[string]Command{
-	"Left":  "Left",
-	"Right": "Right",
-	"Up":    "Up",
-	"Down":  "Down",
-	"A":     "Z",
-	"B":     "X",
-	"Start": "Enter",
+	"Left":  "left",
+	"Right": "right",
+	"Up":    "up",
+	"Down":  "down",
+	"A":     "z",
+	"B":     "x",
+	"Start": "enter",
 }
 
 func main() {
@@ -17,9 +17,11 @@ func main() {
 	kommander := newAutomaton(interpreter)
 
 	messageCallback := func(message string) {
-		kommander.executeCommand(message)
-		fmt.Println(message)
+		err := kommander.executeCommand(message)
+		fmt.Println(err)
 	}
 
-	ConnectToTwitch("wow", "disguisedtoasths", messageCallback)
+	getWindow("OpenEmu")
+
+	ConnectToTwitch("wow", "test", messageCallback)
 }
